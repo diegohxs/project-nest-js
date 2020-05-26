@@ -15,6 +15,8 @@ const user_repository_1 = require("./repository/user.repository");
 const jwt_1 = require("@nestjs/jwt");
 const passport_1 = require("@nestjs/passport");
 const jwt_strategy_1 = require("./jwt/jwt.strategy");
+const config = require("config");
+const jwtConfig = config.get('jwt');
 let AuthModule = (() => {
     let AuthModule = class AuthModule {
     };
@@ -23,9 +25,9 @@ let AuthModule = (() => {
             imports: [
                 passport_1.PassportModule.register({ defaultStrategy: 'jwt' }),
                 jwt_1.JwtModule.register({
-                    secret: 'topSecret51',
+                    secret: process.env.JWT_SECRET || jwtConfig.secret,
                     signOptions: {
-                        expiresIn: 3600,
+                        expiresIn: jwtConfig.expiresIn,
                     },
                 }),
                 typeorm_1.TypeOrmModule.forFeature([user_repository_1.UserRepository]),
