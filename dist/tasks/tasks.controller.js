@@ -43,7 +43,7 @@ let TasksController = (() => {
         }
         getTasks(filterDto, user) {
             this.logger.verbose(`User "${user.username}" retrieving all tasks. Filters ${JSON.stringify(filterDto)}`);
-            return this.tasksService.getTask(filterDto, user);
+            return this.tasksService.getTasks(filterDto, user);
         }
     };
     __decorate([

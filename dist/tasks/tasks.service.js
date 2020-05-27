@@ -43,7 +43,7 @@ let TasksService = (() => {
             await task.save();
             return task;
         }
-        async getTask(filterDto, user) {
+        async getTasks(filterDto, user) {
             return this.taskRepository.getTasks(filterDto, user);
         }
     };

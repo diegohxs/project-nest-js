@@ -45,7 +45,7 @@ private logger = new Logger('TasksController');
     @Get()
     getTasks(@Query(ValidationPipe)filterDto: GetTasksFilterDto,@GetUser() user: User) : Promise<Task[]>{
         this.logger.verbose(`User "${user.username}" retrieving all tasks. Filters ${JSON.stringify(filterDto) }`); 
-        return this.tasksService.getTask(filterDto,user);
+        return this.tasksService.getTasks(filterDto,user);
     }
 
       /*@Get()

@@ -3077,8 +3077,8 @@
         "affectsGlobalScope": false
       },
       "../src/tasks/tasks.service.ts": {
-        "version": "14a9969ce76ee42d6bd47179132de1bdd8dbb5ca0ca0a82dc00bbbabc4a3e285",
-        "signature": "fb8725bf0fd10bfca20bf3f10bc6f40c8d46adf65a628b0de0523af28364333f",
+        "version": "3b5ff3bf3255badea593c5dc7b534ea7025dd33004d05721f0e92090bc1d8252",
+        "signature": "07f6adab022894e9308c028109e965a7f9fb3b0d19e9daf1d3efa261c2c95247",
         "affectsGlobalScope": false
       },
       "../src/tasks/pipes/task-status-validation.pipe.ts": {
@@ -3432,7 +3432,7 @@
         "affectsGlobalScope": false
       },
       "../src/tasks/tasks.controller.ts": {
-        "version": "686dda2efcebb09803fcaeb1f4beba2d62b3c51f44c91c59d8bba69ddfec1fa2",
+        "version": "5dd7dbb97277227e96ec50d25aba90c918e71b318ef6da9426751f61a6024967",
         "signature": "e99a45054142014b370adaeb2cdd19f7b32323c2cbe56dc46ee32bbcaa7d137c",
         "affectsGlobalScope": false
       },
@@ -3712,7 +3712,7 @@
         "affectsGlobalScope": false
       },
       "../src/main.ts": {
-        "version": "5384c390e703379a3952334e673a281aee5003d8862fff3dbf94e7c845f3636e",
+        "version": "29756474d8546937036696c0e529ef49945c8cdbbdb1cbb0f1d05053d9c1dd3e",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
