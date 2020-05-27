@@ -1,32 +1,25 @@
-import { PipeTransform, ArgumentMetadata, BadRequestException } from "@nestjs/common";
-import { TaskStatus } from "../task-status.enum";
+import { PipeTransform, BadRequestException } from '@nestjs/common';
+import { TaskStatus } from '../task-status.enum';
 
-export class TaskStatusValidationPipe implements PipeTransform{
+export class TaskStatusValidationPipe implements PipeTransform {
+  readonly allowedStatuses = [
+    TaskStatus.OPEN,
+    TaskStatus.IN_PROGRESS,
+    TaskStatus.DONE,
+  ];
 
-    readonly allowStatuses = [
-        TaskStatus.OPEN,
-        TaskStatus.DONE,
-        TaskStatus.IN_PROGRESS,
-    ];
+  transform(value: any) {
+    value = value.toUpperCase();
 
-
-    transform(value : any){
-        console.log('value', value);
-
-        value = value.toUpperCase();
-
-        if(! this.isStatusValid(value)){
-            throw new BadRequestException(`"${value}" is an invalid status`)
-        }
-
-        return value;
-
+    if (!this.isStatusValid(value)) {
+      throw new BadRequestException(`"${value}" is an invalid status`);
     }
 
-    private isStatusValid (status : any) {
-        const idx = this.allowStatuses.indexOf(status);
+    return value;
+  }
 
-        return idx !== -1;
-    }
-
+  private isStatusValid(status: any) {
+    const idx = this.allowedStatuses.indexOf(status);
+    return idx !== -1;
+  }
 }

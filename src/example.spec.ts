@@ -1,70 +1,62 @@
-/*describe('my test', ()=>{
-    it('returns true', ()=>{
-        expect(true).toEqual(true);
-    });
-});
+// feature
+class FriendsList {
+  friends = [];
 
+  addFriend(name) {
+    this.friends.push(name);
+    this.announceFriendship(name);
+  }
 
-//feature
-class FriendList{
-    friends = [];
+  announceFriendship(name) {
+    global.console.log(`${name} is now a friend!`);
+  }
 
-    addFriend(name){
-        this.friends.push(name);
-        this.announceFriendShip(name);
-    }
-    announceFriendShip(name){
-        global.console.log(`${name} is now a friend!`);
-    }
-    removeFriend(name){
-        const idx = this.friends.indexOf(name);
-        if(idx === -1){
-            throw new Error('Friend not found!');
-        }
-        this.friends.splice(idx,1);
+  removeFriend(name) {
+    const idx = this.friends.indexOf(name);
+
+    if (idx === -1) {
+      throw new Error('Friend not found!');
     }
 
-
-
+    this.friends.splice(idx, 1);
+  }
 }
 
-//test
+// tests
+describe('FriendsList', () => {
+  let friendsList;
 
-describe('FriendList', ()=>{
- let friendsList;
+  beforeEach(() => {
+    friendsList = new FriendsList();
+  });
 
- beforeEach(()=>{
-     friendsList = new FriendList();
- });
+  it('initializes friends list', () => {
+    expect(friendsList.friends.length).toEqual(0);
+  });
 
+  it('adds a friend to the list', () => {
+    friendsList.addFriend('Ariel');
+    expect(friendsList.friends.length).toEqual(1);
+  });
 
-    it('initializes friend list', () =>{
-        expect(friendsList.friends.length).toEqual(0);
+  it('announces friendship', () => {
+    friendsList.announceFriendship = jest.fn();
+
+    expect(friendsList.announceFriendship).not.toHaveBeenCalled();
+    friendsList.addFriend('Ariel');
+    expect(friendsList.announceFriendship).toHaveBeenCalledWith('Ariel');
+  });
+
+  describe('removeFriend', () => {
+    it('removes a friend from the list', () => {
+      friendsList.addFriend('Ariel');
+      expect(friendsList.friends[0]).toEqual('Ariel');
+      friendsList.removeFriend('Ariel');
+      expect(friendsList.friends[0]).toBeUndefined();
     });
-    it('add a friend to the list', ()=>{
-        friendsList.addFriend('Diego');
-        expect(friendsList.friends.length).toEqual(1);
-    });
 
-    it('announce friendshio', ()=>{
-        friendsList.announceFriendShip = jest.fn();
-        expect(friendsList.announceFriendShip).not.toHaveBeenCalled();
-        friendsList.addFriend('Diego');
-        expect(friendsList.announceFriendShip).toHaveBeenCalled();
+    it('throws an error as friend does not exist', () => {
+      expect(() => friendsList.removeFriend('Ariel')).toThrow(new Error('Friend not found!'));
     });
-
-    describe('remove Friends', ()=>{
-        it('remove a friend from the list',()=>{
-            friendsList.addFriend('Diego');
-            expect(friendsList.friends[0]).toEqual('Diego');
-            friendsList.removeFriend('Diego');
-            expect(friendsList.friends[0]).toBeUndefined();
-        });
-        it('Thrown not exist',()=>{
-          expect(()=>  friendsList.removeFriend('Diego')).toThrow(Error);
-
-        });
-    });
+  });
 });
-
-*/

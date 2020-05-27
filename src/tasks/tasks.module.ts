@@ -6,10 +6,10 @@ import { TaskRepository } from './task.repository';
 import { AuthModule } from '../auth/auth.module';
 
 @Module({
-  imports:[
+  imports: [
     TypeOrmModule.forFeature([TaskRepository]),
     AuthModule,
-],
+  ],
   controllers: [TasksController],
   providers: [TasksService],
 })

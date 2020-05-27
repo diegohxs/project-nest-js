@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing';
-import { TaskRepository } from './task.repository';
 import { TasksService } from './tasks.service';
-import { GetTasksFilterDto } from './dto/get-task.dto';
+import { TaskRepository } from './task.repository';
+import { GetTasksFilterDto } from './dto/get-tasks-filter.dto';
 import { TaskStatus } from './task-status.enum';
 import { NotFoundException } from '@nestjs/common';
 
